@@ -8,8 +8,8 @@ on:
       - main
 
 jobs:
-  test:
-    name: Run Cypress Tests Before Deployment
+  deploy_to_render:
+    name: Deploy To Render
     runs-on: ubuntu-latest
 
     steps:
@@ -30,19 +30,9 @@ jobs:
       - name: Run Cypress Component Tests
         run: npx cypress run --component
 
-  deploy:
-    name: Deploy To Render
-    needs: test  # Only runs if tests pass
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
       - name: Deploy
         # Only run this step if the branch is main
         if: github.ref == 'refs/heads/main'
         env:
           deploy_url: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
-        run: |
-          curl "$deploy_url"
+        run: curl "$deploy_url"
