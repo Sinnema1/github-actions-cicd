@@ -15,7 +15,7 @@ This project ensures:
 - [Installation](#installation)
 - [Usage](#usage)
 - [Testing](#testing)
-- [CI/CD Pipeline](ci/cd-pipeline)
+- [CI/CD Pipeline](#ci/cd-pipeline)
 - [Branching Strategy](#branching-strategy)
 - [License](#license)
 - [Contributing](#contributing)
